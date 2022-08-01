@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                branch "master"
+                branch 'master'
             }
             steps {
                 echo 'Deploying the project'
@@ -25,7 +25,7 @@ pipeline {
 
         stage('ProdDeploy') {
              when {
-                branch "master"
+                branch 'master'
             }
             steps {
                 echo 'Deploying the project'
