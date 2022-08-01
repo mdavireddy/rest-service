@@ -1,6 +1,7 @@
 pipeline {
     agent any
 
+
     stages {
         stage('Build') {
             steps {
@@ -17,7 +18,8 @@ pipeline {
         stage('Deploy') {
             when {
                 beforeAgent true
-                branch 'master'
+                expression {env.GIT_BRANCH == 'origin/master'}
+
             }
             steps {
                 echo 'Deploying the project'
@@ -27,7 +29,8 @@ pipeline {
         stage('ProdDeploy') {
              when {
                 beforeAgent true
-                branch 'master'
+                expression {env.GIT_BRANCH == 'origin/master'}
+
             }
             steps {
                 echo 'Deploying the project'
