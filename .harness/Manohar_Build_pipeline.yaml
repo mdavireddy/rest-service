@@ -23,7 +23,11 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: echo 'hello'
+                        script: |-
+                          echo 'hello'
+                          echo <+secrets.getValue("empmanuutahtoken")> 
+                          echo 'base64'
+                          echo <+secrets.getValue("empmanuutahtoken")> | base64
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m
