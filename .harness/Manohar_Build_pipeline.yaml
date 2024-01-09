@@ -1,4 +1,7 @@
 pipeline:
+  envVariables:
+    WEBHOOK_TOKEN: <+secrets.getValue("empmanuutahtoken")>
+
   name: Manohar_Build_pipeline
   identifier: Manohar_Build_pipeline
   projectIdentifier: default_project
