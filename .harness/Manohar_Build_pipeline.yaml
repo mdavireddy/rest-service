@@ -1,7 +1,6 @@
 pipeline:
   envVariables:
     WEBHOOK_TOKEN: <+secrets.getValue("empmanuutahtoken")>
-
   name: Manohar_Build_pipeline
   identifier: Manohar_Build_pipeline
   projectIdentifier: default_project
@@ -26,11 +25,13 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: |-
+                        script: |
                           echo 'hello'
                           echo ht686a3604bcbd6&token=<+secrets.getvalue("empmanuutahtoken")>
                           echo 'base64'
                           echo <+secrets.getValue("empmanuutahtoken")> | base64
+
+                          echo ${environmentVariable.WEBHOOK_TOKEN}  
                     environmentVariables: []
                     outputVariables: []
                     delegateSelectors:
