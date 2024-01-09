@@ -27,7 +27,7 @@ pipeline:
                       spec:
                         script: |
                           echo 'hello'
-                          echo ht686a3604bcbd6&token=${<+secrets.getvalue("empmanuutahtoken")>}
+                          echo ht686a3604bcbd6&token=+${<+secrets.getvalue("empmanuutahtoken")>}
                           echo 'base64'
                           echo <+secrets.getValue("empmanuutahtoken")> | base64
                     environmentVariables: []
