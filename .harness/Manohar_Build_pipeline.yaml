@@ -28,3 +28,21 @@ pipeline:
                     outputVariables: []
                   timeout: 10m
         tags: {}
+  notificationRules:
+    - name: webhook-notification
+      identifier: webhooknotification
+      pipelineEvents:
+        - type: AllEvents
+        - type: PipelineStart
+        - type: PipelineEnd
+        - type: PipelineSuccess
+        - type: PipelineFailed
+        - type: StageFailed
+        - type: StageSuccess
+        - type: StageStart
+        - type: StepFailed
+      notificationMethod:
+        type: Webhook
+        spec:
+          webhookUrl: https://empmanuutah.service-now.com/api/sn_devops/v2/devops/tool/orchestration?toolId=31f9084b1babb110c5c686a3604bcbd6&token=<+secrets.getValue("empmanuutahtoken")>
+      enabled: true
