@@ -1,0 +1,30 @@
+pipeline:
+  name: Manohar_Build_pipeline
+  identifier: Manohar_Build_pipeline
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: ./gradle clean build
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
