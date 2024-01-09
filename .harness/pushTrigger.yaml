@@ -1,0 +1,14 @@
+inputSet:
+  name: pushTrigger
+  identifier: pushTrigger
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Manohar_Build_pipeline
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
