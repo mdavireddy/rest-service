@@ -50,3 +50,9 @@ pipeline:
         spec:
           webhookUrl: https://empmanuutah.service-now.com/api/sn_devops/v2/devops/tool/orchestration?toolId=31f9084b1babb110c5c686a3604bcbd6&token=<+secrets.getValue("empmanuutahtoken")>
       enabled: true
+  properties:
+    ci:
+      codebase:
+        connectorRef: ManoharGithub
+        repoName: rest-service
+        build: <+input>
