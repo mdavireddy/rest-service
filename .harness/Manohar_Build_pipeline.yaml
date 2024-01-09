@@ -30,6 +30,8 @@ pipeline:
                           echo <+secrets.getValue("empmanuutahtoken")> | base64
                     environmentVariables: []
                     outputVariables: []
+                    delegateSelectors:
+                      - kubernetes-delegate
                   timeout: 10m
         tags: {}
   notificationRules:
@@ -48,7 +50,7 @@ pipeline:
       notificationMethod:
         type: Webhook
         spec:
-          webhookUrl: -<+secrets.getValue("empmanuutahtoken")>
+          webhookUrl: "-<+secrets.getValue(\"empmanuutahtoken\")>"
       enabled: true
   properties:
     ci:
