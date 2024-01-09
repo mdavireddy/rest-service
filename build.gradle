@@ -33,6 +33,6 @@ dependencyManagement {
 }
 
 test {
-     useJUnitPlatform()
+     useJUnitPlatform() 
 } 
     
