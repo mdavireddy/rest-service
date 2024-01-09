@@ -6,8 +6,8 @@ pipeline:
   tags: {}
   stages:
     - stage:
-        name: Build
-        identifier: Build
+        name: Init
+        identifier: Init
         description: ""
         type: Custom
         spec:
