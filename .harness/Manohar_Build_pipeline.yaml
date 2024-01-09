@@ -27,7 +27,7 @@ pipeline:
                           echo 'hello'
                           echo <+secrets.getValue("empmanuutahtoken")> 
                           echo 'base64'
-                          echo <+secrets.getValue("empmanuutahtoken")> | base64 --decode
+                          echo <+secrets.getValue("empmanuutahtoken")> | base64 -d
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m
