@@ -73,3 +73,5 @@ pipeline:
         connectorRef: ManoharGithub
         repoName: rest-service
         build: <+input>
+  delegateSelectors:
+    - felipe-kubernetes-local-delegate
