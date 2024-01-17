@@ -16,7 +16,7 @@ pipeline:
             os: Linux
             arch: Amd64
           runtime:
-            type: Docker
+            type: Cloud
             spec: {}
           execution:
             steps:
@@ -46,6 +46,7 @@ pipeline:
                     repo: mdavireddy/rest-service
                     tags:
                       - <+pipeline.sequenceId>
+                    runAsUser: "0"
         delegateSelectors:
           - helm-delegate
   notificationRules:
