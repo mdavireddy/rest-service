@@ -39,15 +39,6 @@ pipeline:
                     shell: Sh
                     command: ./gradlew clean build
               - step:
-                  type: BuildAndPushDockerRegistry
-                  name: PublishDockerImage
-                  identifier: BuildAndPushDockerRegistry_1
-                  spec:
-                    connectorRef: mdavireddydocker
-                    repo: mdavireddy/rest-service
-                    tags:
-                      - <+pipeline.sequenceId>
-              - step:
                   type: Run
                   name: Show Folders
                   identifier: Show_Folders
@@ -57,6 +48,15 @@ pipeline:
                       ls -a
                       la -a build
                       ls -a build/libs
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: PublishDockerImage
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: mdavireddydocker
+                    repo: mdavireddy/rest-service
+                    tags:
+                      - <+pipeline.sequenceId>
         delegateSelectors:
           - helm-delegate
   notificationRules:
