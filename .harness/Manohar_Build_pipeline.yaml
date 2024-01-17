@@ -35,28 +35,40 @@ pipeline:
                   timeout: 10m
         tags: {}
     - stage:
-        name: build
-        identifier: build
+        name: Build
+        identifier: Build
         description: ""
-        type: Custom
+        type: CI
         spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
           execution:
             steps:
               - step:
-                  type: ShellScript
-                  name: ShellScript_1
-                  identifier: ShellScript_1
+                  type: GitClone
+                  name: GitClone_1
+                  identifier: GitClone_1
                   spec:
-                    shell: Bash
-                    executionTarget: {}
-                    source:
-                      type: Inline
+                    connectorRef: ManoharGithub
+                    repoName: rest-service
+                    build:
+                      type: branch
                       spec:
-                        script: echo 'build'
-                    environmentVariables: []
-                    outputVariables: []
-                  timeout: 10m
-        tags: {}
+                        branch: main
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: ./gradlew clean build
+        delegateSelectors:
+          - helm-delegate
   notificationRules:
     - name: webhook-notification
       identifier: webhooknotification
