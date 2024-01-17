@@ -39,14 +39,13 @@ pipeline:
                       ls -a build/libs
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: PublishDockerImage
-                  identifier: BuildAndPushDockerRegistry_1
+                  name: BuildAndPushDockerRegistry_2
+                  identifier: BuildAndPushDockerRegistry_2
                   spec:
                     connectorRef: mdavireddydocker
                     repo: mdavireddy/rest-service
-                    tags:
-                      - <+pipeline.sequenceId>
-                    runAsUser: 0
+                    tags: <+input>
+                    runAsUser: "0"
         delegateSelectors:
           - helm-delegate
   notificationRules:
