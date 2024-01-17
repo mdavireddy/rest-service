@@ -46,7 +46,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       ls -a
-                      la -a build
+                      ls -a build
                       ls -a build/libs
               - step:
                   type: BuildAndPushDockerRegistry
