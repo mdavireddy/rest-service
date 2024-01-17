@@ -44,8 +44,8 @@ pipeline:
                   spec:
                     connectorRef: mdavireddydocker
                     repo: mdavireddy/rest-service
-                    tags: <+input>
-                    runAsUser: "0"
+                    tags:  <+pipeline.sequenceId>
+                    runAsUser: 0
         delegateSelectors:
           - helm-delegate
   notificationRules:
