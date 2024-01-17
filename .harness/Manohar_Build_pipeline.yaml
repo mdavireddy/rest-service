@@ -21,17 +21,6 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: GitClone
-                  name: Clone
-                  identifier: GitClone_1
-                  spec:
-                    connectorRef: ManoharGithub
-                    repoName: rest-service
-                    build:
-                      type: branch
-                      spec:
-                        branch: main
-              - step:
                   type: Run
                   name: GradleBuild
                   identifier: Run_1
