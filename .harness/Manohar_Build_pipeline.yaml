@@ -22,7 +22,7 @@ pipeline:
             steps:
               - step:
                   type: GitClone
-                  name: GitClone_1
+                  name: Clone
                   identifier: GitClone_1
                   spec:
                     connectorRef: ManoharGithub
@@ -33,14 +33,14 @@ pipeline:
                         branch: main
               - step:
                   type: Run
-                  name: Run_1
+                  name: GradleBuild
                   identifier: Run_1
                   spec:
                     shell: Sh
                     command: ./gradlew clean build
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: BuildAndPushDockerRegistry_1
+                  name: PublishDockerImage
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
                     connectorRef: mdavireddydocker
