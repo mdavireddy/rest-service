@@ -48,7 +48,7 @@ pipeline:
                       - <+pipeline.sequenceId>
                     runAsUser: "0"
         delegateSelectors:
-          - felipe-kubernetes-local-delegate
+          - helm-delegate
   notificationRules:
     - name: webhook-notification
       identifier: webhooknotification
@@ -74,4 +74,4 @@ pipeline:
         repoName: rest-service
         build: <+input>
   delegateSelectors:
-    - felipe-kubernetes-local-delegate
+    - helm-delegate
