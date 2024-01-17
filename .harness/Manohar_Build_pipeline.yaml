@@ -47,8 +47,6 @@ pipeline:
                     tags:
                       - <+pipeline.sequenceId>
                     runAsUser: "0"
-        delegateSelectors:
-          - helm-delegate
   notificationRules:
     - name: webhook-notification
       identifier: webhooknotification
