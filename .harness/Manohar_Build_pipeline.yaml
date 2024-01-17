@@ -67,6 +67,15 @@ pipeline:
                   spec:
                     shell: Sh
                     command: ./gradlew clean build
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: mdavireddydocker
+                    repo: mdavireddy/rest-service
+                    tags:
+                      - <+pipeline.sequenceId>
         delegateSelectors:
           - helm-delegate
   notificationRules:
