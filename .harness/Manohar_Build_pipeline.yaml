@@ -6,35 +6,6 @@ pipeline:
   tags: {}
   stages:
     - stage:
-        name: Init
-        identifier: Init
-        description: ""
-        type: Custom
-        spec:
-          execution:
-            steps:
-              - step:
-                  type: ShellScript
-                  name: ShellScript_1
-                  identifier: ShellScript_1
-                  spec:
-                    shell: Bash
-                    executionTarget: {}
-                    source:
-                      type: Inline
-                      spec:
-                        script: |
-                          echo 'hello'
-                          echo ${<+secrets.getvalue("empmanuutahtoken")>}
-                          echo <+secrets.getvalue("empmanuutahtoken")>
-                          echo ht686a3604bcbd6&token=<+secrets.getvalue("empmanuutahtoken")>
-                          echo 'base64'
-                          echo <+secrets.getValue("empmanuutahtoken")> | base64
-                    environmentVariables: []
-                    outputVariables: []
-                  timeout: 10m
-        tags: {}
-    - stage:
         name: Build
         identifier: Build
         description: ""
