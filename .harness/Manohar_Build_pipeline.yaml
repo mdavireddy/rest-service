@@ -47,6 +47,8 @@ pipeline:
                     tags:
                       - <+pipeline.sequenceId>
                     runAsUser: "0"
+        delegateSelectors:
+          - felipe-kubernetes-local-delegate
   notificationRules:
     - name: webhook-notification
       identifier: webhooknotification
