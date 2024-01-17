@@ -27,7 +27,7 @@ pipeline {
 
         stage('ProdDeploy') {
              when {
-                beforeAgent true
+                beforeAgent  true
                 expression {env.GIT_BRANCH == 'origin/main'}
             }
             steps {
