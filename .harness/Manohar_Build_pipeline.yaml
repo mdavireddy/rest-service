@@ -47,6 +47,16 @@ pipeline:
                     repo: mdavireddy/rest-service
                     tags:
                       - <+pipeline.sequenceId>
+              - step:
+                  type: Run
+                  name: Show Folders
+                  identifier: Show_Folders
+                  spec:
+                    shell: Sh
+                    command: |-
+                      ls -a
+                      la -a build
+                      ls -a build/libs
         delegateSelectors:
           - helm-delegate
   notificationRules:
