@@ -1,5 +1,9 @@
 name: rest-service
-on: workflow_dispatch
+on: 
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 jobs:
   Step1:
     name: Step1
