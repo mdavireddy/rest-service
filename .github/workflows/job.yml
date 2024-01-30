@@ -1,5 +1,9 @@
 name: devops_tests
-on: workflow_dispatch
+on:
+  push:
+    branches: [ "main1" ]
+  pull_request:
+    branches: [ "main1" ]
 jobs:
   helloWorld1:
     name: helloWorld1
