@@ -1,25 +1,21 @@
-name: rest-service
-on: 
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+name: devops_tests
+on: workflow_dispatch
 jobs:
-  Step1:
-    name: Step1
+  helloWorld1:
+    name: helloWorld1
     runs-on: ubuntu-latest
     steps:
       - name: 1step
         run: echo "Hello World!"
-  Step2:
-    name: Step2
-    needs: Step1
+  helloWorld2:
+    name: helloWorld2
+    needs: helloWorld1
     runs-on: ubuntu-latest
     steps:
       - name: 1step
         run: echo "Hello World!"
   ServiceNowDevOpsChange:
-    needs: Step2
+    needs: helloWorld2
     runs-on: ubuntu-latest
     name: ServiceNow DevOps Change
     steps:
@@ -31,10 +27,9 @@ jobs:
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           job-name: 'ServiceNow DevOps Change'
-          change-request: '{"setCloseCode":"false","autoCloseChange":false,"attributes":{"short_description":"Automated Software Deployment","description":"Automated Software Deployment.","assignment_group":"a715cd759f2002002920bde8132e7018","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab; When the change is approved the implementation happens automated by the CICD pipeline within the change planned start and end time window.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed"}}'
+          change-request: '{"setCloseCode":"true","attributes":{"short_description":"Terraform Deploy","description":"Terraform Deploy","assignment_group":"5691c74587257950ea828739dabb3562","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab; When the change is approved the implementation happens automated by the CICD pipeline within the change planned start and end time window.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed"}}'
           interval: '100'
           timeout: '3600'
           changeCreationTimeOut: '3600'
           abortOnChangeCreationFailure: true
           abortOnChangeStepTimeout: true
-
