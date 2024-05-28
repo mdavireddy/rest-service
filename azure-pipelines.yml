@@ -1,7 +1,10 @@
 pool:
   vmImage: ubuntu-latest
 
-trigger: none
+trigger:
+  include: 
+    - main
+
 
 steps:
 - task: PublishPipelineArtifact@1
