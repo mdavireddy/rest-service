@@ -1,9 +1,9 @@
 name: devops_tests
 on:
   push:
-    branches: [ "none" ]
+    branches: [ "main1" ]
   pull_request:
-    branches: [ "none" ]
+    branches: [ "main1" ]
 jobs:
   helloWorld1:
     name: helloWorld1

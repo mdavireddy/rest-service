@@ -1,0 +1,19 @@
+type Query {
+    customerById(id: ID!): Customer
+}
+
+type Customer {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    address: [Address]!
+}
+
+type Address {
+    addressId: ID!
+    address1: String!
+    address2: String
+    postalCode: String!
+    city: String!
+    state: String!
+}
