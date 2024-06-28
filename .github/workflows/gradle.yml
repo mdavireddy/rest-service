@@ -8,6 +8,10 @@ on:
 
 permissions:
   contents: read
+env:
+  SNOW_URL: ${{ secrets.SNOW_URL }}
+  SNOW_TOKEN: ${{ secrets.SNOW_TOKEN }}
+  SNOW_TOOLID: ${{ secrets.SNOW_TOOLID }}
 
 jobs:
 #  build:
