@@ -36,9 +36,11 @@ jobs:
     steps:
     - name : create change
       run: | 
-        # sndevopscli create change -p "{\"changeStepDetails\":{\"timeout\":3600,\"interval\":100},\"autoCloseChange\":true,\"attributes\":{\"short_description\":\"G Venkata Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"a715cd759f2002002920bde8132e7018\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}}"
-        sndevopscli get change -p "{\"buildNumber\":9725199364,\"stageName\":\"ServiceNowDevOpsChange\",\"pipelineName\":\"mdavireddy%2Frest-service%2FJava+CI+with+Gradle\"}" #If we are placing get change cli command in the same job where we are creating change then no need to mention the changeDetails.
+        sndevopscli create change -p "{\"changeStepDetails\":{\"timeout\":3600,\"interval\":100},\"autoCloseChange\":true,\"attributes\":{\"short_description\":\"G Venkata Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"a715cd759f2002002920bde8132e7018\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}}"
+        sndevopscli get change #If we are placing get change cli command in the same job where we are creating change then no need to mention the changeDetails.
         echo $(pwd)
         echo $GITHUB_OUTPUT
         cat $GITHUB_OUTPUT
+        sndevopscli update change -p "{\"short_description\":\"Updated Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"xxxxxxx\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}"
+
        
