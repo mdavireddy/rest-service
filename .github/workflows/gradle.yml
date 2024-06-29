@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mdavireddy/sndevops:1.0.0
-      options: --user node --volume $GITHUB_OUTPUT:/app
+      options: --user node
 
     steps:
     - name : create change
