@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mdavireddy/sndevops:1.0.0
-      options: --user node
+      options: --user node --volume $PWD:/app
 
     steps:
     - name : create change
