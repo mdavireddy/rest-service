@@ -63,7 +63,7 @@ jobs:
     - name : create change
       run: | 
         sndevopscli create change -p "{\"changeStepDetails\":{\"timeout\":3600,\"interval\":100},\"autoCloseChange\":true,\"attributes\":{\"short_description\":\"G Venkata Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"a715cd759f2002002920bde8132e7018\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}}"
-        sndevopscli get change # If we are placing get change cli command in the same job where we are creating change then no need to mention the changeDetails.
+        sndevopscli get change #If we are placing get change cli command in the same job where we are creating change then no need to mention the changeDetails.
         CHG_NUMBER=$(jq -r '.changeRequestNumber' /app/sndevopschg.json)
         echo "CHG_NUMBER=$CHG_NUMBER" >> $GITHUB_ENV        
  
