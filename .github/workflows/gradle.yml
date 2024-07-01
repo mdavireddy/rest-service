@@ -54,7 +54,7 @@ jobs:
 
   ServiceNowDevOpsChange:
     runs-on: ubuntu-latest
-    needs: registerartifact
+    needs: registepackage
     container:
       image: mdavireddy/sndevops:1.0.0
       options: --user node
