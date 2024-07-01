@@ -6,11 +6,22 @@ on:
   push:
     branches: [ "dev" ]
 
+permissions:
+  contents: read
+env:
+  SNOW_URL: ${{ secrets.SNOW_URL }}
+  SNOW_TOKEN: ${{ secrets.SNOW_TOKEN }}
+  SNOW_TOOLID: ${{ secrets.SNOW_TOOLID }}    
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    container:
+      image: mdavireddy/sndevops:1.0.0
+      options: --user node
     steps:
-    - name: Create DIr
-      run: echo $HOME
+       - name : create change
+         run: | 
+           sndevopscli get change -n "CHG0030012" #If we are placing get change cli command in the same job where we are creating change then no need to mention the changeDetails.
+       
+      
