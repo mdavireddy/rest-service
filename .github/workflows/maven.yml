@@ -23,5 +23,5 @@ jobs:
        - name : create change
          run: | 
            sndevopscli get change -p "{\"buildNumber\":9746175054,\"stageName\":\"ServiceNowDevOpsChange\",\"pipelineName\":\"mdavireddy%2Frest-service%2FJava+CI+with+Gradle\"}"
-           cat /app/sndevopschg.json 
+           echo $(cat /app/sndevopschg.json)
       
