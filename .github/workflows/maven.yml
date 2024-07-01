@@ -22,6 +22,6 @@ jobs:
     steps:
        - name : create change
          run: | 
-           sndevopscli get change -n "CHG0030012" #If we are placing get change cli command in the same job where we are creating change then no need to mention the changeDetails.
-       
+           sndevopscli get change -p "{\"buildNumber\":9746175054,\"stageName\":\"ServiceNowDevOpsChange\",\"pipelineName\":\"mdavireddy%2Frest-service%2FJava+CI+with+Gradle\"}"
+
       
