@@ -32,14 +32,16 @@ jobs:
 
   changeapproval:
     runs-on: ubuntu-latest
+    container:
+        image: mdavireddy/sndevops:2.0.0
     env:
       CHG_JOB_ID: ${{ github.run_id }}
     steps:
       - name: Create Change Request
         run: |
           echo "CHG_JOB_ID=${{ github.run_id }}" >> generated_job_id.env
-          docker run --rm mdavireddy/sndevops:2.0.0 sndevopscli create change -p "{\"changeStepDetails\":{\"timeout\":3600,\"interval\":100},\"autoCloseChange\":true,\"attributes\":{\"short_description\":\"G Venkata Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"a715cd759f2002002920bde8132e7018\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}}"
-          docker run --rm mdavireddy/sndevops:2.0.0 sndevopscli get change
+          sndevopscli create change -p "{\"changeStepDetails\":{\"timeout\":3600,\"interval\":100},\"autoCloseChange\":true,\"attributes\":{\"short_description\":\"G Venkata Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"a715cd759f2002002920bde8132e7018\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}}"
+          sndevopscli get change
       - name: Upload generated_job_id.env
         uses: actions/upload-artifact@v2
         with:
@@ -49,6 +51,8 @@ jobs:
   getchange:
     runs-on: ubuntu-latest
     needs: changeapproval
+    container:
+         image: mdavireddy/sndevops:2.0.0
     steps:
       - name: Download generated_job_id.env
         uses: actions/download-artifact@v2
@@ -57,7 +61,7 @@ jobs:
       - name: Get Change Request
         run: |
           source generated_job_id.env
-          docker run --rm mdavireddy/sndevops:2.0.0 sndevopscli get change -p "{\"buildNumber\":${CHG_JOB_ID},\"stageName\":\"ServiceNow DevOps Change Step\",\"pipelineName\":\"SmrutiTestDemoProject\"}"
+          sndevopscli get change -p "{\"buildNumber\":${CHG_JOB_ID},\"stageName\":\"ServiceNow DevOps Change Step\",\"pipelineName\":\"SmrutiTestDemoProject\"}"
       - name: Upload sndevopschg.json
         uses: actions/upload-artifact@v2
         with:
@@ -67,9 +71,11 @@ jobs:
   updatechange:
     runs-on: ubuntu-latest
     needs: getchange
+    container:
+         image: mdavireddy/sndevops:2.0.0
     steps:
       - name: Update Change Request
-        run: docker run --rm mdavireddy/sndevops:2.0.0 sndevopscli update change -p "{\"short_description\":\"Updated Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"xxxxxxx\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}"
+        run: sndevopscli update change -p "{\"short_description\":\"Updated Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"xxxxxxx\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}"
 
   deploy:
     runs-on: ubuntu-latest
