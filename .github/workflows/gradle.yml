@@ -30,22 +30,6 @@ jobs:
       - name: Pre-Build Step
         run: echo ${{ github.job }}
 
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Docker container
-        uses: actions/checkout@v2
-      - name: Build Artifact and Package
-        run: |
-          docker run --rm mdavireddy/sndevops:2.0.0 sndevopscli create artifact -a "[{\"name\":\"Artifact-${{ github.job }}\",\"repositoryName\":\"TestRepo\",\"version\":\"1.${{ github.run_id }}.0\"}]"
-          docker run --rm mdavireddy/sndevops:2.0.0 sndevopscli create package -n "Test_Package" -a "[{\"name\":\"Artifact-${{ github.job }}\",\"repositoryName\":\"TestRepo\",\"version\":\"1.${{ github.run_id }}.0\"}]"
-
-  sonar:
-    runs-on: ubuntu-latest
-    steps:
-      - name: ServiceNow DevOps SonarScan Results
-        run: docker run --rm mdavireddy/sndevops:2.0.0 sndevopscli create sonar -url 'https://sonarcloud.io' -projectKey 'xxxxxxx'
-
   changeapproval:
     runs-on: ubuntu-latest
     env:
