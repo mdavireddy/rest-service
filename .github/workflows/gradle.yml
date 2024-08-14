@@ -6,8 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  contents: read
+
 env:
   SNOW_URL: ${{ secrets.SNOW_URL }}
   SNOW_TOKEN: ${{ secrets.SNOW_TOKEN }}
