@@ -53,10 +53,6 @@ jobs:
     container:
          image: mdavireddy/sndevops:2.0.0
     steps:
-      - name: Download generated_job_id.env
-        uses: actions/download-artifact@v2
-        with:
-          name: generated_job_id
       - name: Get Change Request
         run: |
           source generated_job_id.env
