@@ -80,6 +80,5 @@ jobs:
     steps:
       - name: Update Change Request
         run: |
-           sndevopscli create securityScan -p "{ \"pipelineInfo\": {  \"buildNumber\": \"${{ github.run_id }}\",   \"pipelineExecutionUrl\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}, \"securityResultAttributes\": { \"scanner\": \"Veracode\",    \"applicationName\": \"PetStoreAPI-Github\",\"buildVersion\": \"\",   \"securityToolId\": \"\"}}"
-
+           sndevopscli create securityScan -p "{ \"pipelineInfo\": {  \"runId\": \"${github.run_id}\",   \"runNumber": \"${github.run_number}\", \"runAttempt": \"${github.run_attempt}\",   \"job\": \"ServiceNowDevOpsSecurityScan\",  \"workflow\": \"${github.workflow}\",  \ "repository\": \"${github.repository}\" }, \"securityResultAttributes\": { \"scanner\": \"Veracode\",    \"applicationName\": \"PetStoreAPI-Github\",\"buildVersion\": \"\",   \"securityToolId\": \"\"}}"
        
