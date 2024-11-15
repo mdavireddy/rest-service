@@ -70,13 +70,13 @@ jobs:
         
   ScanResults:
     runs-on: ubuntu-latest
-    env:
-      SNOW_URL: ${{ secrets.SNOW_URL }}
-      SNOW_TOKEN: ${{ secrets.SNOW_TOKEN }}
-      SNOW_TOOLID: ${{ secrets.SNOW_TOOLID }}
     needs: deploy
     container:
       image: mdavireddy/sndevops:2.0.0
+    env:
+      SNOW_URL: ${{ secrets.SNOW_URL }}
+      SNOW_TOKEN: ${{ secrets.SNOW_TOKEN }}
+      SNOW_TOOLID: ${{ secrets.SNOW_TOOLID }}  
     steps:
       - name: Update Change Request
         run: |
