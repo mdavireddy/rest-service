@@ -4,9 +4,9 @@ on:
   workflow_call:
 
 env:
-  SNOW_URL: ${{ secrets.SNOW_URL }}
-  SNOW_TOKEN: ${{ secrets.SNOW_TOKEN }}
-  SNOW_TOOLID: ${{ secrets.SNOW_TOOLID }}
+  #SNOW_URL: ${{ secrets.SNOW_URL }}
+  #SNOW_TOKEN: ${{ secrets.SNOW_TOKEN }}
+ # SNOW_TOOLID: ${{ secrets.SNOW_TOOLID }}
   CI_PIPELINE_ID: ${{ github.run_id }}
   CI_API_V4_URL: ${{ github.server_url }}
   CI_JOB_ID: ${{ github.run_id }}
@@ -70,6 +70,10 @@ jobs:
         
   ScanResults:
     runs-on: ubuntu-latest
+    env:
+      SNOW_URL: ${{ secrets.SNOW_URL }}
+      SNOW_TOKEN: ${{ secrets.SNOW_TOKEN }}
+      SNOW_TOOLID: ${{ secrets.SNOW_TOOLID }}
     needs: deploy
     container:
       image: mdavireddy/sndevops:2.0.0
