@@ -49,7 +49,7 @@ jobs:
     steps:
       - name: Get Change Request
         run: |
-           sndevopscli get change -p "{\"buildNumber\":${CHG_JOB_ID},\"stageName\":\"ServiceNow DevOps Change Step\",\"pipelineName\":\"SmrutiTestDemoProject\"}"
+           sndevopscli get change -p "{\"buildNumber\":${CHG_JOB_ID},\"stageName\":\"changeapproval\",\"pipelineName\":\"${{github.repository}}/${{github.workflow}}\", \"attemptNumber\": \"${{ github.run_attempt }}\"}"
 
 
   
