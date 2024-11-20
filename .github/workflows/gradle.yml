@@ -29,43 +29,33 @@ jobs:
 
   changeapproval:
     runs-on: ubuntu-latest
-    #container:
-      #  image: mdavireddy/sndevops:2.0.0
+    container:
+      image: mdavireddy/sndevops:2.0.0
     env:
-      CHG_JOB_ID: ${{ github.run_id }}
+      CI_JOB_NAME: changeapproval
     steps:
       - name: Create Change Request
         run: |
           echo "CHG_JOB_ID=${{ github.run_id }}"
-        #  sndevopscli create change -p "{\"changeStepDetails\":{\"timeout\":3600,\"interval\":100},\"autoCloseChange\":true,\"attributes\":{\"short_description\":\"G Venkata Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"a715cd759f2002002920bde8132e7018\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}}"
-        #  sndevopscli get change
+          sndevopscli create change -p "{\"changeStepDetails\":{\"timeout\":3600,\"interval\":100},\"autoCloseChange\":true,\"attributes\":{\"short_description\":\"G Venkata Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"a715cd759f2002002920bde8132e7018\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}}"
 
   getchange:
     runs-on: ubuntu-latest
     needs: changeapproval
-    #container:
-       #  image: mdavireddy/sndevops:2.0.0
+    container:
+      image: mdavireddy/sndevops:2.0.0
+    env:
+      CI_JOB_NAME: getchange   
     steps:
       - name: Get Change Request
         run: |
-           echo "CHG_JOB_ID=${{ github.run_id }}"
-          # sndevopscli get change -p "{\"buildNumber\":${CHG_JOB_ID},\"stageName\":\"ServiceNow DevOps Change Step\",\"pipelineName\":\"SmrutiTestDemoProject\"}"
+           sndevopscli get change -p "{\"buildNumber\":${CHG_JOB_ID},\"stageName\":\"ServiceNow DevOps Change Step\",\"pipelineName\":\"SmrutiTestDemoProject\"}"
 
 
-  updatechange:
-    runs-on: ubuntu-latest
-    needs: getchange
-  #  container:
-       #  image: mdavireddy/sndevops:2.0.0
-    steps:
-      - name: Update Change Request
-        run: |
-         echo "CHG_JOB_ID=${{ github.run_id }}"
-         # sndevopscli update change -p "{\"short_description\":\"Updated Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"xxxxxxx\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}"
-
+  
   deploy:
     runs-on: ubuntu-latest
-    needs: updatechange
+    needs: getchange
     steps:
       - name: Deploy Job
         run: echo ${{ github.job }}
@@ -78,4 +68,5 @@ jobs:
     steps:
       - name: Update Change Request
         run: |
-           sndevopscli create securityScan -p "{ \"pipelineInfo\": {  \"runId\": \"${{ github.run_id }}\",   \"runNumber\": \"${{ github.run_number }}\", \"runAttempt\": \"${{ github.run_attempt }}\",   \"job\": \"ServiceNowDevOpsSecurityScan\",  \"workflow\": \"${{ github.workflow }}\",  \"repository\": \"${{github.repository}}\" }, \"securityResultAttributes\": { \"scanner\": \"Veracode\",    \"applicationName\": \"PetStoreAPI-Github\",\"buildVersion\": \"\",   \"securityToolId\": \"\"}}"
+            echo "hello"
+           #sndevopscli create securityScan -p "{ \"pipelineInfo\": {  \"runId\": \"${{ github.run_id }}\",   \"runNumber\": \"${{ github.run_number }}\", \"runAttempt\": \"${{ github.run_attempt }}\",   \"job\": \"ServiceNowDevOpsSecurityScan\",  \"workflow\": \"${{ github.workflow }}\",  \"repository\": \"${{github.repository}}\" }, \"securityResultAttributes\": { \"scanner\": \"Veracode\",    \"applicationName\": \"PetStoreAPI-Github\",\"buildVersion\": \"\",   \"securityToolId\": \"\"}}"
