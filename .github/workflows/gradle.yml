@@ -1,7 +1,9 @@
 name: Java CI with Gradle
 
 on:
-  workflow_call:
+  #workflow_call:
+   push:
+     branches: [ "main" ]
 
 env:
   SNOW_URL: ${{ secrets.SNOW_URL }}
