@@ -14,7 +14,7 @@ env:
   CI_JOB_ID: ${{ github.run_id }}
   CI_PROJECT_PATH: ${{ github.job }}
   CI_REPOSITORY_NAME: ${{ github.repository }}
-  CI_RUN_ATTEMPT: ${{ github.run_attempt }}
+  #CI_RUN_ATTEMPT: ${{ github.run_attempt }}
   #CI_PROJECT_ID: ${{ github.run_id }}
   CI_PROJECT_TITLE: ${{github.repository}}/${{github.workflow}}
   CI_COMMIT_BRANCH: $${{github.ref_name }}
@@ -37,7 +37,7 @@ jobs:
       - name: Create Change Request
         run: |
           echo "CHG_JOB_ID=${{ github.run_id }}"
-          sndevopscli create change -ctx "{\"projectId\": \"123456\"}" -p "{\"changeStepDetails\": {\"timeout\":3600,\"interval\":100},\"autoCloseChange\":true,\"attributes\":{\"short_description\":\"G Venkata Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"a715cd759f2002002920bde8132e7018\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}}"
+          sndevopscli create change -ctx "{\"projectId\": \"123456\", \"attemptNumber\": \"${{ github.run_attempt }}\"}" -p "{\"changeStepDetails\": {\"timeout\":3600,\"interval\":100},\"autoCloseChange\":true,\"attributes\":{\"short_description\":\"G Venkata Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"a715cd759f2002002920bde8132e7018\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}}"
 
   getchange:
     runs-on: ubuntu-latest
