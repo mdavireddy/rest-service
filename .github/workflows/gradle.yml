@@ -18,7 +18,7 @@ env:
   #CI_PROJECT_ID: ${{ github.run_id }}
   #CI_PROJECT_TITLE: ${{github.repository}}/${{github.workflow}}
   #CI_COMMIT_BRANCH: $${{github.ref_name }}
-  #CI_WORKFLOW_NAME: ${{ github.workflow }}
+  #CI_WORKFLOW_NAME: ${{ github.workflow }} 
 
 jobs:
   pre-build:
