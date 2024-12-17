@@ -1,0 +1,63 @@
+
+
+name: SkippedPipeline
+
+on:
+  push:
+    branches: [ "main1" ]
+
+jobs:
+  # Stage 1: Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+  build-skipstage1:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main1'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to Staging
+        run: echo 'hello'     
+
+  build-skipstage2:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main1'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to Staging
+        run: echo 'hello'        
+   
+
+  deploy-staging:
+    runs-on: ubuntu-latest
+    needs: build
+    #if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to Staging
+        run: echo 'hello'
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: build
+   # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy to Production
+        run: echo 'hello'
+
+
+
