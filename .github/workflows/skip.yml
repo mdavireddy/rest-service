@@ -24,7 +24,7 @@ jobs:
     if: github.ref == 'refs/heads/main1'
     steps:
       - name: Deploy to Staging
-        run: echo 'hello'     
+        run: echo 'hello'    
 
   build-skipstage2:
     runs-on: ubuntu-latest
