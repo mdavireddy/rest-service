@@ -62,7 +62,7 @@ jobs:
   deploy-staging:
     runs-on: ubuntu-latest
     needs: build-skipstage5
-    if: github.ref == 'refs/heads/main'
+    if: always()
     steps:
       - name: Deploy to Staging
         run: echo 'hello'
@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy-staging
 
-    if: github.ref == 'refs/heads/main'
+    if: always()
     steps:
       - name: Deploy to Production
         run: echo 'hello'
