@@ -65,7 +65,7 @@ jobs:
     if: always()
     steps:
       - name: Deploy to Staging
-        run: echo 'hello'
+        run: exit 1
 
   deploy-production:
     runs-on: ubuntu-latest
