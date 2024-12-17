@@ -61,21 +61,15 @@ jobs:
 
   deploy-staging:
     runs-on: ubuntu-latest
-    needs: build-skipstage5
-    #if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
       - name: Deploy to Staging
         run: echo 'hello'
 
   deploy-production:
     runs-on: ubuntu-latest
-    needs: deploy-staging
-   # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
       - name: Deploy to Production
         run: echo 'hello'
 
