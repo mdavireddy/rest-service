@@ -11,7 +11,7 @@ env:
   SNOW_TOOLID: ${{ secrets.SNOW_TOOLID }}
   PIPELINE_ID: ${{ github.run_id }}
   API_V4_URL: ${{ github.server_url }}
-  OB_ID: ${{ github.run_id }}
+  JOB_ID: ${{ github.run_id }}
   PROJECT_PATH: ${{ github.job }}
   REPOSITORY_NAME: ${{ github.repository }}
   RUN_ATTEMPT: ${{ github.run_attempt }}
