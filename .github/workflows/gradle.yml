@@ -9,16 +9,16 @@ env:
   SNOW_URL: ${{ secrets.SNOW_URL }}
   SNOW_TOKEN: ${{ secrets.SNOW_TOKEN }}
   SNOW_TOOLID: ${{ secrets.SNOW_TOOLID }}
-  #CI_PIPELINE_ID: ${{ github.run_id }}
-  #CI_API_V4_URL: ${{ github.server_url }}
-  #CI_JOB_ID: ${{ github.run_id }}
-  #CI_PROJECT_PATH: ${{ github.job }}
-  #CI_REPOSITORY_NAME: ${{ github.repository }}
-  #CI_RUN_ATTEMPT: ${{ github.run_attempt }}
-  #CI_PROJECT_ID: ${{ github.run_id }}
-  #CI_PROJECT_TITLE: ${{github.repository}}/${{github.workflow}}
-  #CI_COMMIT_BRANCH: $${{github.ref_name }}
-  #CI_WORKFLOW_NAME: ${{ github.workflow }} 
+  PIPELINE_ID: ${{ github.run_id }}
+  API_V4_URL: ${{ github.server_url }}
+  OB_ID: ${{ github.run_id }}
+  PROJECT_PATH: ${{ github.job }}
+  REPOSITORY_NAME: ${{ github.repository }}
+  RUN_ATTEMPT: ${{ github.run_attempt }}
+  PROJECT_ID: ${{ github.run_id }}
+  PROJECT_TITLE: ${{github.repository}}/${{github.workflow}}
+  COMMIT_BRANCH: $${{github.ref_name }}
+  WORKFLOW_NAME: ${{ github.workflow }} 
 
 jobs:
   pre-build:
