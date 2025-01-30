@@ -37,7 +37,7 @@ jobs:
       - name: Create Change Request
         run: |
           echo "CHG_JOB_ID=${{ github.run_id }}"
-          #sndevopscli create change -ctx "{\"projectId\": \"123456\", \"attemptNumber\": \"${{ github.run_attempt }}\"}" -p "{\"changeStepDetails\": {\"timeout\":3600,\"interval\":100},\"autoCloseChange\":true,\"attributes\":{\"short_description\":\"G Venkata Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"a715cd759f2002002920bde8132e7018\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}}"
+          sndevopscli create change -ctx "{\"projectId\": \"123456\", \"attemptNumber\": \"${{ github.run_attempt }}\"}" -p "{\"changeStepDetails\": {\"timeout\":3600,\"interval\":100},\"autoCloseChange\":true,\"attributes\":{\"short_description\":\"G Venkata Automated Software Deployment\",\"description\":\"Automated Software Deployment.\",\"assignment_group\":\"a715cd759f2002002920bde8132e7018\",\"implementation_plan\":\"Software update is tested and results can be found in Test Summaries Tab.\",\"backout_plan\":\"When software fails in production, the previous software release will be re-deployed.\",\"test_plan\":\"Testing if the software was successfully deployed or not\"}}"
 
   getchange:
     runs-on: ubuntu-latest
@@ -50,7 +50,7 @@ jobs:
       - name: Get Change Request
         run: |
            echo "hello"
-           #sndevopscli get change -p "{\"buildNumber\":\"${{ github.run_id }}\",\"stageName\":\"changeapproval\",\"pipelineName\":\"${{github.repository}}/${{github.workflow}}\", \"attemptNumber\": \"${{ github.run_attempt }}\"}"
+           sndevopscli get change -p "{\"buildNumber\":\"${{ github.run_id }}\",\"stageName\":\"changeapproval\",\"pipelineName\":\"${{github.repository}}/${{github.workflow}}\", \"attemptNumber\": \"${{ github.run_attempt }}\"}"
 
 
   
@@ -84,4 +84,4 @@ jobs:
       - name: Update Change Request
         run: |
             echo "hello"
-           #sndevopscli create securityScan -p "{ \"pipelineInfo\": {  \"runId\": \"${{ github.run_id }}\",   \"runNumber\": \"${{ github.run_number }}\", \"runAttempt\": \"${{ github.run_attempt }}\",   \"job\": \"ServiceNowDevOpsSecurityScan\",  \"workflow\": \"${{ github.workflow }}\",  \"repository\": \"${{github.repository}}\" }, \"securityResultAttributes\": { \"scanner\": \"Veracode\",    \"applicationName\": \"PetStoreAPI-Github\",\"buildVersion\": \"\",   \"securityToolId\": \"\"}}"
+            sndevopscli create securityScan -p "{ \"pipelineInfo\": {  \"runId\": \"${{ github.run_id }}\",   \"runNumber\": \"${{ github.run_number }}\", \"runAttempt\": \"${{ github.run_attempt }}\",   \"job\": \"ServiceNowDevOpsSecurityScan\",  \"workflow\": \"${{ github.workflow }}\",  \"repository\": \"${{github.repository}}\" }, \"securityResultAttributes\": { \"scanner\": \"Veracode\",    \"applicationName\": \"PetStoreAPI-Github\",\"buildVersion\": \"\",   \"securityToolId\": \"\"}}"
