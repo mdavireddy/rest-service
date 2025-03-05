@@ -4,7 +4,7 @@ name: SkippedPipeline
 
 on:
   push:
-    branches: [ "main2"]
+    branches: [ "main2" ]
 
 jobs:
   # Stage 1: Build job
