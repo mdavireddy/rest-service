@@ -18,8 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:  
-      - name: Echo
-        run: ls -ll
+      - name: Echo 
+        run: ls -la
+        
       - name: ServiceNow DevOps Unit Test Results
         uses: ServiceNow/servicenow-devops-test-report@v3.1.0
         with:
