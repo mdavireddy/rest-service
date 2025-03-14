@@ -1,7 +1,7 @@
 name: devops_tests
-on: workflow_dispatch
-  #push:
-  #  branches: [ "main1" ]
+on:
+   push:
+    branches: [ "main" ]
   #pull_request:
   #  branches: [ "main1" ]
 jobs:
@@ -18,13 +18,14 @@ jobs:
     steps:
       - name: 1step
         run: echo "Hello World!"
+        
   ServiceNowDevOpsChange:
     needs: helloWorld2
     runs-on: ubuntu-latest
     name: ServiceNow DevOps Change
     steps:
         - name: ServiceNow DevOps Change
-          uses: ServiceNow/servicenow-devops-change@v3.0.0
+          uses: ServiceNow/servicenow-devops-change@v5.1.0
           with:
               devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
               instance-url: ${{ secrets.SN_INSTANCE_URL }}
@@ -37,3 +38,17 @@ jobs:
               changeCreationTimeOut: '3600'
               abortOnChangeCreationFailure: true
               abortOnChangeStepTimeout: true
+              deployment-gate: '{"environment":"Dev","jobName":"Deploy"}'
+        - name: Output of Change Creation
+          run: echo "change-request-number = ${{ steps.create.outputs.change-request-number }}" >> $GITHUB_OUTPUT
+  Deploy:
+   name: Deploy
+   needs: ServiceNowDevOpsChange
+   runs-on: ubuntu-latest
+   environment: Dev
+   steps:
+      - name: ServiceNow DevOps deploy
+        run: echo deployed
+
+ 
+ 
