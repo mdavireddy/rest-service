@@ -72,7 +72,7 @@ jobs:
       steps:
         - name: devops soanr results
           run: |
-            sndevopscli create sonar -url 'https://sonarcloud.io' -projectKey 'mdavireddy_rabbitmq-demo'
+            sndevopscli create sonar -url  'https://sonarcloud.io' -projectKey 'mdavireddy_rabbitmq-demo'
       
         
   ScanResults:
