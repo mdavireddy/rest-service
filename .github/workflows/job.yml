@@ -8,7 +8,7 @@ jobs:
   helloWorld1:
     name: helloWorld1
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - name: 1step
         run: echo "Hello World!"
   helloWorld2:
