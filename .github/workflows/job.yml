@@ -37,14 +37,14 @@ jobs:
               changeCreationTimeOut: '3600'
               abortOnChangeCreationFailure: true
               abortOnChangeStepTimeout: true
-              deployment-gate: '{"environment":"Dev","jobName":"Deploy"}'
+              #deployment-gate: '{"environment":"Dev","jobName":"Deploy"}'
         - name: Output of Change Creation
           run: echo "change-request-number = ${{ steps.create.outputs.change-request-number }}" >> $GITHUB_OUTPUT
   Deploy:
    name: Deploy
    needs: ServiceNowDevOpsChange
    runs-on: ubuntu-latest
-   environment: Dev
+   #environment: Dev
    steps:
       - name: ServiceNow DevOps deploy
         run: echo deployed 
