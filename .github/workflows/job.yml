@@ -44,7 +44,7 @@ jobs:
    name: Deploy
    needs: ServiceNowDevOpsChange
    runs-on: ubuntu-latest
-   #environment: Dev
+   environment: Dev
    steps:
       - name: ServiceNow DevOps deploy
         run: echo deployed 
