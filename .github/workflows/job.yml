@@ -37,13 +37,13 @@ jobs:
               changeCreationTimeOut: '3600'
               abortOnChangeCreationFailure: true
               abortOnChangeStepTimeout: true
-              deployment-gate: '{"environment":"Dev","jobName":"Deploy"}'
+              #deployment-gate: '{"environment":"Dev","jobName":"Deploy"}'
        
   Deploy:
    name: Deploy
    needs: ServiceNowDevOpsChange
    runs-on: ubuntu-latest
-   environment: Dev
+   #environment: Dev
    steps:
       - name: ServiceNow DevOps deploy
         run: echo deployed 
