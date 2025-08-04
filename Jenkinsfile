@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+ options {
+        // This sets the build display name in the UI
+        buildDisplayName("Build #${BUILD_NUMBER} - My Custom Name")
+    }
 
     stages {
         stage('Build') {
