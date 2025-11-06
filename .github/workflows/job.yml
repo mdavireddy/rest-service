@@ -20,9 +20,9 @@ jobs:
         - name: ServiceNow DevOps Change
           uses: ServiceNow/servicenow-devops-change@v5.1.0
           with:
-              devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}  
-              instance-url: ${{ secrets.SN_INSTANCE_URL }}
-              tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+              devops-integration-token: ${{ secrets.SNOW_TOKEN }}  
+              instance-url: ${{ secrets.SNOW_URL }}
+              tool-id: ${{ secrets.SNOW_TOOLID }}
               context-github: ${{ toJSON(github) }}
               job-name: 'ServiceNow DevOps Change'
               change-request: '{"setCloseCode":"true","attributes":{"short_description":"Terraform Deploy","description":"Terraform Deploy","assignment_group":"a715cd759f2002002920bde8132e7018","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab; When the change is approved the implementation happens automated by the CICD pipeline within the change planned start and end time window.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed"}}'
@@ -44,4 +44,5 @@ jobs:
 
  
  
+
 
