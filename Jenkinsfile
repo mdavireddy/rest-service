@@ -2,7 +2,7 @@ pipeline {
     agent any
  options {
         // This sets the build display name in the UI
-        buildDisplayName("Build #${BUILD_NUMBER} - My Custom Name")
+        // buildDisplayName("Build #${BUILD_NUMBER} - My Custom Name")
     }
 
     stages {
@@ -12,12 +12,7 @@ pipeline {
               //  sh './gradlew clean build -x test'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing the project'
-               // sh './gradlew clean test'
-            }
-        }
+       
         stage('Deploy') {
             when {
                 beforeAgent true
