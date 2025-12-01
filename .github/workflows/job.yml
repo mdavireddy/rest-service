@@ -16,6 +16,10 @@ jobs:
     needs: helloWorld1
     runs-on: ubuntu-latest
     name: ServiceNow DevOps Change
+    env:
+      GITHUB_ACTOR: ${{ github.actor }}
+    outputs:
+      change_request_number: ${{ steps.extract_cr_number.outputs.cr_number }}
     steps:
         - name: ServiceNow DevOps Change
           #run: echo deployed 
@@ -45,6 +49,7 @@ jobs:
 
  
  
+
 
 
 
