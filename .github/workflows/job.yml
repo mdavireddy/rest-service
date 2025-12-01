@@ -36,10 +36,10 @@ jobs:
               changeCreationTimeOut: '3600'
               abortOnChangeCreationFailure: true
               abortOnChangeStepTimeout: true
-              deployment-gate: '{"environment":"Dev","jobName":"Deploy"}'
+              deployment-gate: '{"environment":"Dev","jobName":"Send_Change_Request_Notification"}'
        
-  Deploy:
-   name: Deploy
+  Send_Change_Request_Notification:
+   name: Send Change Request Notification Email
    needs: ServiceNowDevOpsChange
    runs-on: ubuntu-latest
    environment: Dev
@@ -49,6 +49,7 @@ jobs:
 
  
  
+
 
 
 
