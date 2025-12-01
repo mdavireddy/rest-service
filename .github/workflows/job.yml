@@ -36,7 +36,7 @@ jobs:
               changeCreationTimeOut: '3600'
               abortOnChangeCreationFailure: true
               abortOnChangeStepTimeout: true
-              deployment-gate: '{"environment":"Dev","jobName":"Send_Change_Request_Notification"}'
+              deployment-gate: '{"environment":"Dev","jobName":"Send Change Request Notification Email"}'
        
   Send_Change_Request_Notification:
    name: Send Change Request Notification Email
@@ -49,6 +49,7 @@ jobs:
 
  
  
+
 
 
 
