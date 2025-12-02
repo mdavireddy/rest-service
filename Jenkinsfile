@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project'
-              //  sh './gradlew clean build -x test'
+              //  sh './gradlew clean build -x test' 
             }
         }
        
