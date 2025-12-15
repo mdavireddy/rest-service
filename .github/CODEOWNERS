@@ -1,9 +1,4 @@
-# Default owner for everything in the repo
-* @org-admins
+# Everything in the repo
+* @mdavireddy
 
-# Application probe configuration
-/app/probes/ @mdavireddy
-
-# Kubernetes liveness/readiness probes
-/k8s/probes/ @mdavireddy
 
