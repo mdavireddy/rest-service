@@ -10,7 +10,7 @@
 	</test>
 	<test name="advanced">
 		<!-- <packages>
-			<package name="com.slokam.automation.opencart.testscripts"></package>
+			 <package name="com.slokam.automation.opencart.testscripts"></package>
 		</packages> -->
 		<classes>
 			<class name="com.slokam.automation.opencart.testscripts.AdvancedTest"></class>
