@@ -4,7 +4,7 @@ name: Dummy
 
 on:
   push:
-    branches: [ "main1" ]  
+    branches: [ "main" ]  
 
 jobs:
   build:
@@ -20,6 +20,6 @@ jobs:
     steps:  
         
       - name: Echo 
-        run: exit 1 
+        run: echo 'hello'
    
     
