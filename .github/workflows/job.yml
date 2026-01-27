@@ -1,7 +1,7 @@
 name: devops_tests
 on:
    push:
-    branches: ["main" ]
+    branches: ["main1" ]
 
 jobs:
   helloWorld1:
@@ -49,6 +49,7 @@ jobs:
 
  
  
+
 
 
 
