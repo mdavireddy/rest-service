@@ -20,10 +20,10 @@ jobs:
       - name: ServiceNow DevOps Security Results
         uses: ServiceNow/servicenow-devops-security-result@v3.1.0
         with:
-            devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
-            instance-url: ${{ secrets.SN_INSTANCE_URL }}
-            tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+            devops-integration-token: "pIGDr612gUhSAsXh0yqtZn2BQF0MjnB1"
+            instance-url: "https://ef0e-165-225-243-17.ngrok-free.app"
+            tool-id: "740adef90c5f3e10f8772a8794d73999"
             context-github: ${{ toJSON(github) }}
             job-name: 'ServiceNow Security Scan Results'
-            security-result-attributes: '{"scanner": "Veracode", "applicationName": "", "buildVersion": "", "securityToolId": ""}'
+            security-result-attributes: '{"scanner": "Veracode", "applicationName": "PetStoreAPI-Github", "buildVersion": "", "securityToolId": ""}'
             
