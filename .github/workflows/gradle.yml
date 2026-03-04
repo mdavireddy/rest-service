@@ -3,7 +3,7 @@ name: Java CI with Gradle
 on:
   #workflow_call:
    push:
-     branches: [ "main"] 
+     branches: [ "main1"] 
 
 env:
   SNOW_URL: "https://devopsrefrecord.service-now.com/"
