@@ -6,9 +6,7 @@ on:
      branches: [ "main1"] 
 
 env:
-  SNOW_URL: "https://devopsrefrecord.service-now.com/"
-  SNOW_TOKEN: "XTGxVjBT0XhMHnhhvC1u9TWYnpE6nBSe"
-  SNOW_TOOLID: "7fcf02df939b7210fa76f1ce3803d6b6"
+
   PIPELINE_ID: ${{ github.run_id }}
   API_V4_URL: ${{ github.server_url }}
   JOB_ID: ${{ github.run_id }}
