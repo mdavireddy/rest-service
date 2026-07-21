@@ -23,7 +23,7 @@ jobs:
     steps:
         - name: ServiceNow DevOps Change
           #run: echo deployed 
-          uses: ServiceNow/servicenow-devops-change@v5.1.0
+          uses: ServiceNow/servicenow-devops-change@feature/https-proxy-agent
           with:
               devops-integration-token: ${{ secrets.SNOW_TOKEN }}  
               instance-url: ${{ secrets.SNOW_URL }}
