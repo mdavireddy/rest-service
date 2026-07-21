@@ -47,6 +47,15 @@ jobs:
       - name: ServiceNow DevOps deploy 
         run: |
           echo "This is run attempt #${{ github.run_attempt }}"
+        
+  Final_stage:
+   name: Final stage
+   needs: Send_Change_Request_Notification
+   runs-on: ubuntu-latest
+   steps:
+      - name: Echo 
+        run: |
+          echo "This is run attempt #${{ github.run_attempt }}"
           if [ "${{ github.run_attempt }}" == "1" ]; then
             echo "Simulating failure on first attempt"
             exit 1
