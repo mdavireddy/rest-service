@@ -36,7 +36,7 @@ jobs:
               changeCreationTimeOut: '60'
               abortOnChangeCreationFailure: false
               abortOnChangeStepTimeout: false
-              #deployment-gate: '{"environment":"Dev","jobName":"Send Change Request Notification Email"}'
+              deployment-gate: '{"environment":"Dev","jobName":"Send Change Request Notification Email"}'
        
   Send_Change_Request_Notification:
    name: Send Change Request Notification Email
@@ -45,7 +45,14 @@ jobs:
    environment: Dev
    steps:
       - name: ServiceNow DevOps deploy 
-        run: echo deployed  
+        run: |
+          echo "This is run attempt #${{ github.run_attempt }}"
+          if [ "${{ github.run_attempt }}" == "1" ]; then
+            echo "Simulating failure on first attempt"
+            exit 1
+          else
+            echo "deployed"
+          fi
 
  
  
