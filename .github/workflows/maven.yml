@@ -22,7 +22,7 @@ jobs:
         with:
             devops-integration-token: ${{ secrets.SNOW_TOKEN }}  
             instance-url:  ${{ secrets.SN_INSTANCE_URL }}
-            tool-id: "7fcf02df939b7210fa76f1ce3803d6b6"
+            tool-id: ${{ secrets.SNOW_TOOLID }}
             context-github: ${{ toJSON(github) }}
             job-name: 'ServiceNow Security Scan Results'
             security-result-attributes: '{"scanner": "Veracode", "applicationName": "PetStoreAPI-Github", "buildVersion": "", "securityToolId": ""}'
