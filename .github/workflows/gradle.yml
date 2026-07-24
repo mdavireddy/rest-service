@@ -3,7 +3,7 @@ name: Java CI with Gradle
 on:
   #workflow_call:
    push:
-     branches: [ "main1"] 
+     branches: ["main1"] 
 
 env:
 
