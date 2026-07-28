@@ -23,14 +23,14 @@ jobs:
     steps:
         - name: ServiceNow DevOps Change
           #run: echo deployed 
-          uses: ServiceNow/servicenow-devops-change@feature/https-proxy-agent
+          uses: ServiceNow/servicenow-devops-change@4.0.0
           with:
               devops-integration-token: ${{ secrets.SNOW_TOKEN }}  
               instance-url: ${{ secrets.SNOW_URL }}
               tool-id: ${{ secrets.SNOW_TOOLID }}
               context-github: ${{ toJSON(github) }}
               job-name: 'ServiceNow DevOps Change'
-              change-request: '{"setCloseCode":"true","attributes":{"short_description":"Terraform Deploy","description":"Terraform Deploy","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab; When the change is approved the implementation happens automated by the CICD pipeline within the change planned start and end time window.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed"}}'
+              change-request: '{"setCloseCode":"true","attributes":{"short_description":"Terraform Deploy","description":"Terraform Deploy","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab; When the change is approved the implementation happens automated by the CICD pipeline within the change planned start and end time window.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed",      "work_notes": "[code]<p>The following is the list of changes that are being deployed:</p>\n<table border=\"1\" style=\"border-collapse: collapse; width: 100%;\">\n<thead>\n<tr style=\"background-color: #f2f2f2;\">\n<th style=\"padding: 8px; text-align: left; width: 50px;\">Story ID</th>\n<th style=\"padding: 8px; text-align: left; width: 65px;\">Story Type</th>\n<th style=\"padding: 8px; text-align: left; width: 550px;\">Story Name</th>\n<th style=\"padding: 8px; text-align: left; width: 150px;\">Author</th>\n<th style=\"padding: 8px; text-align: left; width: 50px;\">Commit</th>\n<th style=\"padding: 8px; text-align: left; width: 120px;\">Commit Date (GMT)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"padding: 8px;\"><a href=\"https://dev.azure.com/cat-digital/Cat%20Digital/_workitems/edit/2511156\" target=\"_blank\">2511156</a></td>\n<td style=\"padding: 8px;\">User Story</td>\n<td style=\"padding: 8px;\"><a href=\"https://dev.azure.com/cat-digital/Cat%20Digital/_workitems/edit/2511156\" target=\"_blank\">Upgrade pfm-asset-filter-syncer-geofence-entry-exit-lambda from Java 17 to Java 25</a></td>\n<td style=\"padding: 8px;\">lipkaa2</td>\n<td style=\"padding: 8px;\"><a href=\"https://github.com/cat-digital-platform/P-AssetFilterSyncer/commit/37332af6ae3f135b83cc38298b40dbade9588d6e\" target=\"_blank\">37332af</a></td>\n<td style=\"padding: 8px;\">07.28.2026 07:49AM</td>\n</tr>\n</tbody></table>[/code]\n"}}'
               interval: '10'
               timeout: '60'
               changeCreationTimeOut: '60'
