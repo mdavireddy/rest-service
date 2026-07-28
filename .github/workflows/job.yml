@@ -23,7 +23,7 @@ jobs:
     steps:
         - name: ServiceNow DevOps Change
           #run: echo deployed 
-          uses: ServiceNow/servicenow-devops-change@4.0.0
+          uses: ServiceNow/servicenow-devops-change@v4.0.0
           with:
               devops-integration-token: ${{ secrets.SNOW_TOKEN }}  
               instance-url: ${{ secrets.SNOW_URL }}
