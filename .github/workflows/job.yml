@@ -56,12 +56,8 @@ jobs:
       - name: Echo 
         run: |
           echo "This is run attempt #${{ github.run_attempt }}"
-          if [ "${{ github.run_attempt }}" == "1" ]; then
-            echo "Simulating failure on first attempt"
-            exit 1
-          else
-            echo "deployed"
-          fi
+          echo "deployed"
+          
 
  
  
