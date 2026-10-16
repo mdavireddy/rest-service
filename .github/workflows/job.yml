@@ -19,7 +19,7 @@ jobs:
     env:
       GITHUB_ACTOR: ${{ github.actor }}
     outputs:
-      change_request_number: ${{ steps.extract_cr_number.outputs.cr_number }} 
+      change_request_number: ${{ steps.extract_cr_number.outputs.cr_number }}
     steps:
         - name: ServiceNow DevOps Change
           #run: echo deployed 
